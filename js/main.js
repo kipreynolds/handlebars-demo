@@ -1,9 +1,25 @@
 (function (){
-  var template = Handlebars.templates['entries'];
-  var context = {
-      title: "Handlebars Test",
-      test: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Error, minus ut voluptates quis corrupti amet excepturi, similique eum omnis ipsam libero."
+  var request = new XMLHttpRequest();
+  request.open('GET', '/data/entries.json', true);
+
+  request.onload = function() {
+    if (request.readyState == 4 && request.status == 200) {
+      // Success! Store response text for use in template
+      var entryData = JSON.parse(request.responseText);
+      var template = Handlebars.templates['entries'];
+      var context = entryData;
+      var html = template(context);
+      document.getElementById("entries").innerHTML = html;
+    } else {
+      // Request made, but error encountered
+      console.log("Request error");
+    }
   };
-  var html = template(context);
-  document.getElementById("entries").innerHTML = html;
+
+  request.onerror = function() {
+    // There was a connection error of some sort
+    console.log("connection error");
+  };
+
+  request.send();
 }());

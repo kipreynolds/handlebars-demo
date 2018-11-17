@@ -18,4 +18,25 @@ body {
 }
 .entry {
   margin: 1.5rem 1rem;
+  display: grid;
+  grid-template-columns: 30% 1fr;
+}
+.entry__image img {
+  width: 100%;
+}
+.entry__text {
+  padding: 5px 20px;
+}
+
+@media screen and (max-width: 600px) {
+  .demo__content-header {
+    font-size: 2.0rem;
+    margin: 1.5rem 1rem;
+  }
+  .entry {
+    grid-template-columns: 1fr;
+  }
+  .entry__text {
+    padding: 10px;
+  }
 }

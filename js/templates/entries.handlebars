@@ -1,6 +1,13 @@
+{{#each entries}}
 <div class="entry">
-  <h2>{{title}}</h2>
-  <p class="body">
-    {{test}}
-  </p>
+  <div class="entry__image">
+    <img src="{{image}}" alt="">
+  </div>
+  <div class="entry__text">
+    <h2>{{title}}</h2>
+    <p class="body">
+      {{test}}
+    </p>
+  </div>
 </div>
+{{/each}}
